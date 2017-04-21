@@ -18,10 +18,18 @@
               android:layout_margin="10dp"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+<<<<<<< HEAD
               android:hint="Name here" />
     <Button android:id="@+id/submitButton"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
+=======
+              android:hint="Device name" />
+              
+    <Button android:id="@+id/submitButton"
+              android:layout_marginRight="10dp"
+              android:layout_marginLeft="10dp"
+>>>>>>> 054a962f5e3a2710265478f2efdfe7cb9d9272be
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit" />

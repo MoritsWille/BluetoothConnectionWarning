@@ -11,8 +11,7 @@ namespace BluetoothWarning
     [Activity(Label = "BluetoothWarning", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        Button refreshButton;
-        TextView dataView;
+        string deviceName;
         BluetoothAdapter bluetoothAdapter;
         BluetoothReceiver receiver;
 
@@ -33,11 +32,13 @@ namespace BluetoothWarning
             RegisterReceiver(receiver, filter);
 
             bluetoothAdapter = BluetoothAdapter.DefaultAdapter;
+            
+            TextView dataView = FindViewById<TextView>(Resource.Id.text);
+            EditText nameField = FindViewById<EditText>(Resource.Id.name);
 
-            refreshButton = FindViewById<Button>(Resource.Id.button);
-            dataView = FindViewById<TextView>(Resource.Id.text);
-
-            refreshButton.Click += (o, e) => {
+            Button refreshButton = FindViewById<Button>(Resource.Id.button);
+            refreshButton.Click += (o, e) => 
+            {
                 if (receiver.Devices.Count == 0)
                 {
                     dataView.Text = "No data yet";
@@ -49,6 +50,20 @@ namespace BluetoothWarning
                     {
                         dataView.Text += device.Name + "\n";
                     }
+                }
+            };
+
+            Button submitButton = FindViewById<Button>(Resource.Id.submitButton);
+            submitButton.Click += (o, e) =>
+            {
+                deviceName = nameField.Text;
+                if(deviceName.Length > 0)
+                {
+                    //start background intent here
+                }
+                else
+                {
+                    Toast.MakeText(this, "Please write a device name", ToastLength.Short);
                 }
             };
             
